@@ -11,6 +11,17 @@
       android:orientation="vertical"
       android:padding="10dp"
       android:background="#F1F9FF">
+      <!--<TextView-->
+          <!--android:layout_width="match_parent"-->
+          <!--android:drawableRight="@drawable/ic_edit"-->
+          <!--android:gravity="center_vertical"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--android:text="Short Description"-->
+          <!--android:textColor="@color/darkBlue"-->
+          <!--android:textStyle="bold"-->
+          <!--android:paddingLeft="5dp"-->
+          <!--android:paddingTop="5dp"-->
+          <!--android:textSize="16sp"/>-->
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -25,7 +36,28 @@
           android:layout_height="wrap_content"
           android:text="@string/profile_short_description_sample"
           android:textColor="#2175BC"
-          android:padding="5dp"/>
+          android:padding="5dp" />
+      <!--<Button-->
+          <!--android:layout_width="wrap_content"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--android:background="@color/colorPrimary"-->
+          <!--android:text="EDIT"-->
+          <!--android:layout_gravity="end"-->
+          <!--android:textColor="@color/white"/>-->
+      <!--<ImageButton-->
+          <!--android:layout_width="wrap_content"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--android:src="@drawable/ic_edit"-->
+          <!--android:background="@color/white"-->
+          <!--android:layout_gravity="end"/>-->
+      <!--<android.support.design.widget.FloatingActionButton-->
+          <!--android:layout_width="wrap_content"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--android:src="@drawable/ic_edit"-->
+          <!--android:backgroundTint="@color/white"-->
+          <!--android:layout_marginBottom="5dp"-->
+          <!--android:layout_gravity="end"-->
+          <!--android:layout_marginRight="5dp"/>-->
   </LinearLayout>
 
     <LinearLayout
@@ -34,6 +66,16 @@
         android:orientation="vertical"
         android:padding="10dp"
         android:background="#F1F9FF">
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:drawableRight="@drawable/ic_edit"-->
+            <!--android:gravity="center_vertical"            android:layout_height="wrap_content"-->
+            <!--android:text="Skills"-->
+            <!--android:textColor="@color/darkBlue"-->
+            <!--android:textStyle="bold"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:paddingTop="5dp"-->
+            <!--android:textSize="16sp"/>-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,6 +91,27 @@
             android:text="@string/profile_skills_sample"
             android:textColor="#2175BC"
             android:padding="5dp"/>
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="EDIT"-->
+            <!--android:layout_gravity="end"-->
+            <!--android:textColor="@color/white"/>-->
+        <!--<ImageButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/ic_edit"-->
+            <!--android:background="@color/white"-->
+            <!--android:layout_gravity="end"/>-->
+        <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/ic_edit"-->
+            <!--android:backgroundTint="@color/white"-->
+            <!--android:layout_marginBottom="5dp"-->
+            <!--android:layout_gravity="end"-->
+            <!--android:layout_marginRight="5dp"/>-->
     </LinearLayout>
 
 </LinearLayout>
