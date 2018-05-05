@@ -42,7 +42,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths"/>
         </provider>
 
         <activity
@@ -58,8 +58,9 @@
             android:name=".projects.ui.ProjectDetails"
             android:label="@string/title_activity_project_details"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".members.ui.EditProfileActivity" />
-        <activity android:name=".members.ui.ProfilePictureDisplayActivity"></activity>
+        <activity android:name=".members.ui.EditProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".members.ui.ProfilePictureDisplayActivity"/>
     </application>
 
 </manifest>

@@ -1,7 +1,5 @@
 package com.udacity.googleindiascholarships.members.ui;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -12,27 +10,29 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.udacity.googleindiascholarships.Manifest;
 import com.udacity.googleindiascholarships.R;
+import com.udacity.googleindiascholarships.members.ui.adapters.ProfileViewPagerAdapter;
 import com.udacity.googleindiascholarships.utils.Constants;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,6 +45,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private String mCurrentPhotoPath;
     private boolean clickedPicture = false;
     private String mCurrentPhotoGalleryPath;
+    ViewPager viewPager;
+    TabLayout tabLayout;
+    Toolbar toolbar;
+    FloatingActionButton editProfileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,44 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         profilePictureEditLayout.setClickable(true);
         profilePictureEditLayout.setOnClickListener(this);
 
+        viewPager = (ViewPager) findViewById(R.id.vp_edit_profile);
+        tabLayout = (TabLayout) findViewById(R.id.tl_edit_profile);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_edit_profile);
+        editProfileButton = (FloatingActionButton) findViewById(R.id.fab_edit_profile);
+
+        editProfileButton.setOnClickListener(this);
+        setSupportActionBar(toolbar);
+
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Edit Profile");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        viewPager.setOffscreenPageLimit(2);
+        setUpViewPager();
+
+        tabLayout.setupWithViewPager(viewPager);
+
         userProfilePicture = (ImageView) findViewById(R.id.iv_user_profile);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void setUpViewPager() {
+        ProfileViewPagerAdapter adapter = new ProfileViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new EditProfileAboutTabFragment(), "About");
+        adapter.addFragment(new ProfileGISTabFragment(), "GIS");
+        adapter.addFragment(new EditProfileProjectsTabFragment(), "Projects");
+        viewPager.setAdapter(adapter);
     }
 
     @Override
@@ -128,6 +169,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 intent.setAction(Intent.ACTION_PICK);
                 startActivityForResult(intent, PICK_IMAGE_CODE);
                 break;
+            case R.id.fab_edit_profile:
+                Toast.makeText(this, "Your profile edited successfully", Toast.LENGTH_SHORT).show();
+                finish();
+                break;
         }
     }
 
@@ -181,14 +226,16 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                     mCurrentPhotoGalleryPath = getAbsolutePath(data.getData());
                     Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoGalleryPath);
                     Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, false);
-                    userProfilePicture.setImageBitmap(scaledBitmap);
+                    RoundedImg roundedImage = new RoundedImg(scaledBitmap);
+                    userProfilePicture.setImageDrawable(roundedImage);
                 }
         }
         else if(requestCode == TAKE_PICTURE_CODE && resultCode == RESULT_OK){
             clickedPicture = true;
             Bitmap image = BitmapFactory.decodeFile(mCurrentPhotoPath);
             Bitmap scaledBitmap = Bitmap.createScaledBitmap(image, 100, 100, false);
-            userProfilePicture.setImageBitmap(scaledBitmap);
+            RoundedImg roundedImage = new RoundedImg(scaledBitmap);
+            userProfilePicture.setImageDrawable(roundedImage);
         }
     }
 
