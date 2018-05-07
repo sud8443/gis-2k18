@@ -94,7 +94,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private void setUpViewPager() {
         ProfileViewPagerAdapter adapter = new ProfileViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new EditProfileAboutTabFragment(), "About");
-        adapter.addFragment(new ProfileGISTabFragment(), "GIS");
+        adapter.addFragment(new EditProfileGISTabFragment(), "GIS");
         adapter.addFragment(new EditProfileProjectsTabFragment(), "Projects");
         viewPager.setAdapter(adapter);
     }

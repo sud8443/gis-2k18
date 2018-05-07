@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.udacity.googleindiascholarships.R;
+import com.udacity.googleindiascholarships.members.ui.adapters.EditProfileProjectsAdapter;
 import com.udacity.googleindiascholarships.members.ui.adapters.ProfileProjectsAdapter;
 
 /**
@@ -19,7 +20,7 @@ public class EditProfileProjectsTabFragment extends Fragment {
 
     LinearLayoutManager llmProfileProjects;
     RecyclerView rvProfileProjects;
-    ProfileProjectsAdapter profileProjectsAdapter;
+    EditProfileProjectsAdapter profileProjectsAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +33,7 @@ public class EditProfileProjectsTabFragment extends Fragment {
         llmProfileProjects = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rvProfileProjects.setLayoutManager(llmProfileProjects);
 
-        profileProjectsAdapter = new ProfileProjectsAdapter();
+        profileProjectsAdapter = new EditProfileProjectsAdapter();
         rvProfileProjects.setAdapter(profileProjectsAdapter);
 
 

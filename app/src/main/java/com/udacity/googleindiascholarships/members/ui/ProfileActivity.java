@@ -14,6 +14,7 @@ import android.view.View;
 
 import com.udacity.googleindiascholarships.R;
 import com.udacity.googleindiascholarships.members.ui.adapters.ProfileViewPagerAdapter;
+import com.udacity.googleindiascholarships.utils.Constants;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -33,6 +34,20 @@ public class ProfileActivity extends AppCompatActivity {
         vpProfile = (ViewPager) findViewById(R.id.vpProfile);
         tabsProfile = (TabLayout)findViewById(R.id.tabsProfile);
         editProfile = (FloatingActionButton) findViewById(R.id.fab_edit_profile);
+
+        if(getIntent() != null){
+            if(getIntent().hasExtra(Constants.PROFILE_ACTIVITY_EDITABLE_KEY)){
+                boolean editable = getIntent().getBooleanExtra(Constants.PROFILE_ACTIVITY_EDITABLE_KEY, false);
+                if(editable){
+                    editProfile.setVisibility(View.VISIBLE);
+                }else {
+                    editProfile.setVisibility(View.GONE);
+                }
+            }else{
+                // Not editable as no extra constant has been passed
+                editProfile.setVisibility(View.GONE);
+            }
+        }
 
         if(getSupportActionBar()!=null) {
             getSupportActionBar().setTitle("Phase 1");
