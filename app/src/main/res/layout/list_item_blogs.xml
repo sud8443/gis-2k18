@@ -18,7 +18,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
-
         <TextView
             android:id="@+id/tv_blog_title"
             android:layout_width="match_parent"
